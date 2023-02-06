@@ -1,0 +1,242 @@
+.welcome {
+    position: relative;
+    margin-bottom: 60px;
+
+    @media (min-width: @tablet-width) {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin: 0 auto;
+        margin-bottom: 100px;
+
+        &::before {
+            content: "";
+    
+            position: absolute;
+            top: 0;
+            left: 365px;
+    
+            width: 308px;
+            height: 296px;
+    
+            background: url('../img/bg-wood.svg') no-repeat center;
+    
+            z-index: -1;
+        }
+    }
+
+    @media (min-width: @laptop-width) {
+        gap: 62px;
+        margin-bottom: 150px;
+
+        &::before {
+            width: 503px;
+            height: 483px;
+
+            top: 80px;
+            left: 552px;
+        }
+    }
+
+    @media (min-width: @desktop-width) {
+        gap: 220px;
+        margin-bottom: 180px;
+
+        &::before {
+            width: 718px;
+            height: 689px;
+
+            top: 113px;
+            left: 725px;
+        }
+    }
+}
+
+.welcome__img {
+    display: flex;
+    width: 100%;
+    max-width: 430px;
+    height: 252px;
+    margin: 0 auto 20px;
+
+    border: 3px solid #8B9D83;
+    border-radius: 30px;
+
+    overflow: hidden;
+
+    & img {
+        object-fit: cover;
+    }
+
+    @media (min-width: @tablet-width) {
+        max-width: 590px;
+        height: 331px;
+        margin: 0;
+
+        order: 2;
+    }
+
+    @media (min-width: @laptop-width) {
+        min-width: 557px;
+        max-width: 760px;
+        height: 435px;
+    }
+
+    @media (min-width: @desktop-width) {
+        max-width: 900px;
+        height: 620px;
+
+        border-width: 4px;
+    }
+}
+
+.welcome__info {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @media (min-width: @tablet-width) {
+        justify-content: space-between;
+        width: 300px;
+    }
+
+    @media (min-width: @laptop-width) {
+        width: 100%;
+        max-width: 453px;
+    }
+
+    @media (min-width: @desktop-width) {
+        justify-content: center;
+        align-items: center;
+        max-width: 600px;
+    }
+}
+
+.welcome__caption {
+    @media (min-width: @tablet-width) {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    @media (min-width: @laptop-width) {
+        font-size: 42px;
+        line-height: 50px; 
+    }
+
+    @media (min-width: @desktop-width) {
+        margin-bottom: 130px;
+
+        font-size: 58px;
+        line-height: 68px;
+    }
+}
+
+// .welcome__text {
+//     margin-bottom: 60px;
+
+//     font-size: 18px;
+//     line-height: 21px;
+
+//     @media (min-width: @tablet-width) {
+//         margin-bottom: 75px;
+//     }
+
+//     @media (min-width: @laptop-width) {
+//         font-size: 24px;
+//         line-height: 28px; 
+//     }
+
+//     @media (min-width: @desktop-width) {
+//         margin-bottom: 134px;
+
+//         font-size: 28px;
+//         line-height: 32px;
+//     }
+// }
+
+.welcome__button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto;
+
+    @media (min-width: @laptop-width) {
+        justify-content: space-between;
+        width: 430px;
+        gap: 0;
+    }
+
+    @media (min-width: @desktop-width) {
+        width: 480px;
+    }
+}
+
+.welcome__price-btn {
+    position: relative;
+    width: 235px;
+    height: 50px;
+
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    border-radius: 42px;
+    overflow: hidden;
+
+    &:before {
+        content: "";
+
+        position: absolute;
+        top: -180px;
+        left: 0;
+
+        display: inline-block;
+        width: 30px;
+        height: 100%;
+
+        background-color: #fff;
+        animation: shiny-btn 4s ease-in-out infinite;
+    }
+
+    @media (min-width: @laptop-width) {
+        width: 320px;
+        height: 80px;
+
+        font-size: 16px;
+
+        border-radius: 80px;
+    }
+}
+
+@keyframes shiny-btn {
+    0% { transform: scale(0) rotate(45deg); opacity: 0; }
+    80% { transform: scale(0) rotate(45deg); opacity: 0.5; }
+    81% { transform: scale(4) rotate(45deg); opacity: 1; }
+    100% { transform: scale(50) rotate(45deg); opacity: 0; }
+}
+
+.welcome__inst-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    & svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    @media (min-width: @laptop-width) {
+        width: 81px;
+        height: 81px;
+
+        & svg {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
