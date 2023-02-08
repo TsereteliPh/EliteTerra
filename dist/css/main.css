@@ -300,7 +300,6 @@ dl {
 .footer__logo-container {
   display: flex;
   flex-direction: column;
-  gap: 17px;
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
@@ -313,7 +312,7 @@ dl {
 }
 @media (min-width: 1920px) {
   .footer__logo-container {
-    gap: 25px;
+    gap: 15px;
   }
 }
 .footer__link {
@@ -334,8 +333,13 @@ dl {
   width: 220px;
   font-size: 14px;
   line-height: 16px;
-  text-align: justify;
+  text-align: center;
   color: #E6CC70;
+}
+@media (min-width: 744px) {
+  .footer__slogan {
+    text-align: left;
+  }
 }
 @media (min-width: 1400px) {
   .footer__slogan {

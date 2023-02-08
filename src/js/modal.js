@@ -56,7 +56,7 @@ modalInputs.forEach(input => {
     }
 });
 
-//Функционал сообщения об отправке
+//Функционал отправки
 
 const modalMessageToggler = () => {
     modalMessages.forEach(message => {
@@ -64,8 +64,8 @@ const modalMessageToggler = () => {
     });
 }
 
-modalSubmitBtn.addEventListener('click', (evt) => {
-    // evt.preventDefault();
+modalSubmitBtn.addEventListener('submit', (evt) => {
+    evt.preventDefault();
 
     if (modalForm.checkValidity()) {
         modalMessageToggler();

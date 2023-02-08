@@ -29,7 +29,6 @@
 .footer__logo-container {
     display: flex;
     flex-direction: column;
-    gap: 17px;
     max-width: fit-content;
     margin: 0 auto;
 
@@ -38,7 +37,7 @@
     }
     
     @media (min-width: @desktop-width) {
-        gap: 25px;
+        gap: 15px;
     }
 }
 
@@ -63,8 +62,12 @@
 
     font-size: 14px;
     line-height: 16px;
-    text-align: justify;
+    text-align: center;
     color: @yellow;
+
+    @media (min-width: @tablet-width) {
+        text-align: left;
+    }
     
     @media (min-width: @laptop-width) {
         width: 240px;
