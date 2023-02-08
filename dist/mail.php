@@ -17,7 +17,7 @@
 
     $theme = "Новая заявка с сайта EliteTerra";
 
-    $mail->addAdress("filippok1488@mail.ru");
+    $mail->addAdress("eliteterra@yandex.ru");
 
     $mail->Subject = $theme;
     $mail->Body = $body;
@@ -30,7 +30,7 @@
 
     $_POST = json_decode(file_get_contents('php://input'), true);
 
-    $to = "filippok1488@mail.ru";
+    $to = "eliteterra@yandex.ru";
     $from = trim($_POST['modal-mail']);
     $senderName = trim($_POST['modal-name']);
     $senderPhone = trim($_POST['modal-phone']);
