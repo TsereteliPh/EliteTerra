@@ -17,14 +17,6 @@ burgerBtn.addEventListener('click', () => {
 })
 
 
-const phoneInput = document.querySelectorAll('.js-phone-input');
-phoneInput.forEach(input => {
-    input.onfocus = () => {
-        if (input.value === '') {
-            input.value = '+';
-        }
-    }
-});
 lightGallery(document.getElementById('lightgallery'), {
     plugins: [lgThumbnail],
     speed: 500
@@ -32,10 +24,13 @@ lightGallery(document.getElementById('lightgallery'), {
 
 const modal = document.querySelector('.modal');
 const modalForm = modal.querySelector('.modal__form');
+const modalInputs = modal.querySelectorAll('.modal__input');
+const modalMessages = modal.querySelectorAll('.modal__caption');
 const modalOpenBtn = document.querySelectorAll('.js-modal-open');
 const modalCloseBtn = modal.querySelector('.js-modal-close');
 const modalSubmitBtn = modal.querySelector('.modal__button');
 
+//Функционал открытия-закрытия модального окна
 const bodyLock = () => {
     document.body.style.overflow = 'hidden';
 }
@@ -64,93 +59,81 @@ modalCloseBtn.addEventListener('click', () => {
     modalToggler();
 })
 
+//Функционал валидации формы модального окна
+
+const validationFail = (elem) => {
+    elem.style.borderColor = '#CF0909';
+}
+
+const validationSuccess = (elem) => {
+    elem.style.borderColor = '#5BA23A';
+}
+
+modalInputs.forEach(input => {
+    input.onchange = function() {
+        if (input.value !== "" && !input.validity.typeMismatch && !input.validity.patternMismatch) {
+            validationSuccess(input);
+        } else {
+            validationFail(input);
+        }
+    }
+});
+
+//Функционал сообщения об отправке
+
+const modalMessageToggler = () => {
+    modalMessages.forEach(message => {
+        message.classList.toggle('modal__caption--show');
+    });
+}
+
 modalSubmitBtn.addEventListener('click', (evt) => {
-    evt.preventDefault();
+    // evt.preventDefault();
 
     if (modalForm.checkValidity()) {
-        modalToggler();
+        modalMessageToggler();
+        modalForm.style.display = 'none';
+    } else {
+        modalSubmitBtn.animate([
+            {transform: 'translateX(4px)'},
+            {transform: 'translateX(-4px)'},
+            {transform: 'translateX(4px)'},
+            {transform: 'translateX(-4px)'},
+            {transform: 'translateX(4px)'},
+            {transform: 'translateX(0)'}
+          ], {
+            duration: 500,
+            easing: 'ease'
+          })
     }
 })
-const form = document.querySelector('.quiz__form');
-if (form) {
-    const questions = form.querySelectorAll('.js-quiz-question');
-    const lastQuestion = form.querySelector('.form__last');
-    const quizSuccess = form.querySelector('.js-quiz-success');
-    const quizAlert = form.querySelector('.form__invalid');
-    const quizNext = form.querySelector('.form__next-btn');
-    const quizPrev = form.querySelector('.form__back-btn');
-    const quizSubmit = form.querySelector('.form__submit-btn');
-    const quizReset = form.querySelector('.form__reset-btn');
-
-
-    let questionCounter = 0;
-    let quizSend = false;
-
-    const currentQuestion = (n) => {
-        for (question of questions) {
-            question.classList.remove('js-quiz-active');
-        }
-        if (quizSend) {
-            quizSuccess.classList.add('js-quiz-active');
-            quizNext.style.display = 'none';
-            quizPrev.style.display = 'none';
-            quizReset.style.display = 'block';
-        } else {
-            quizNext.style.display = 'flex';
-            quizPrev.style.display = 'flex';
-            quizReset.style.display = 'none';
-            quizSuccess.classList.remove('js-quiz-active');
-            questions[n].classList.add('js-quiz-active');
-            btnHider();
+const phoneInput = document.querySelectorAll('.js-phone-input');
+phoneInput.forEach(input => {
+    input.onfocus = () => {
+        if (input.value === '') {
+            input.value = '+';
         }
     }
+});
+document.querySelectorAll('a[href^="#"').forEach(link => {
 
-    const btnHider = () => {
-        if (lastQuestion.classList.contains('js-quiz-active')) {
-            quizNext.style.display = 'none';
-        } else {
-            quizNext.style.display = 'flex';
-        }
-    }
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
 
-    const nextQuestion = () => {
-        if (questionCounter === questions.length - 1) {
-            return
-        } else {
-            questionCounter++;
-            currentQuestion(questionCounter);
-        }
-    }
+        let href = this.getAttribute('href').substring(1);
 
-    const prevQuestion = () => {
-        if (questionCounter === 0) {
-            return
-        } else {
-            questionCounter--;
-            currentQuestion(questionCounter);
-        }
-    }
+        const scrollTarget = document.getElementById(href);
 
-    quizNext.addEventListener('click', nextQuestion);
+        const topOffset = 30;
+        const elementPosition = scrollTarget.getBoundingClientRect().top;
+        const offsetPosition = elementPosition - topOffset;
 
-    quizPrev.addEventListener('click', prevQuestion);
-
-    quizSubmit.addEventListener('click', (evt) => {
-        evt.preventDefault();
-
-        if (form.checkValidity()) {
-            quizSend = true;
-            currentQuestion();
-        } else {
-            quizAlert.style.display = 'block';
-        }
-    })
-
-    quizReset.addEventListener('click', () => {
-        quizSend = false;
-        currentQuestion(0);
-    })
-}
+        window.scrollBy({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+    });
+});
 document.addEventListener('DOMContentLoaded', () => {
     if (window.innerWidth < 744){
         const processSlider = new Swiper('.process__wrapper', {
@@ -160,36 +143,26 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             spaceBetween: 20  
         });
-
-        const teamSwiper = new Swiper('.team__wrapper', {
-            loop: false,
-            slidesPerView: 'auto',
-            slidesPerScroll: 1,
-            scrollbar: {
-                el: '.team__scrollbar',
-                draggable: true,
-            },
-            spaceBetween: 20  
-        })
     }
 })
 
-const projectsSwiper = new Swiper('.projects__wrapper', {
-    navigation: {
-        nextEl: '.projects__right-btn',
-        prevEl: '.projects__left-btn',
-    },
-    loop: true,
-    slidesPerView: 'auto',
-    breakpoints: {
-        320: {
-            spaceBetween: 45
-        },
-        1920: {
-            spaceBetween: 60
-        }
-    }
-})
+//Скрипт для блока Проекты (закомментирован)
+// const projectsSwiper = new Swiper('.projects__wrapper', {
+//     navigation: {
+//         nextEl: '.projects__right-btn',
+//         prevEl: '.projects__left-btn',
+//     },
+//     loop: true,
+//     slidesPerView: 'auto',
+//     breakpoints: {
+//         320: {
+//             spaceBetween: 45
+//         },
+//         1920: {
+//             spaceBetween: 60
+//         }
+//     }
+// })
 
 const servicesSwiper = new Swiper('.services__wrapper', {
     navigation: {
@@ -207,21 +180,3 @@ const servicesSwiper = new Swiper('.services__wrapper', {
         }
     }
 })
-const videos = document.querySelectorAll('.video__holder');
-
-videos.forEach(video => {
-    let videoFrame = video.querySelector('.video__frame');
-    let playBtn = video.querySelector('.video__button');
-
-    playBtn.addEventListener('click', () => {
-        if (!video.classList.contains('video__frame--active')) {
-            playBtn.style.zIndex = 0;
-            videoUrl = videoFrame.dataset.videoId;
-            videoFrame.innerHTML = '<iframe width="100%" height="100%" src="' + videoUrl + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
-            videoFrame.classList.add('video__frame--active');
-        } else {
-            return
-        }
-    })
-});
-

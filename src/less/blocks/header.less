@@ -1,21 +1,23 @@
 .header {
     position: relative;
 
-    margin-bottom: 27px;
+    margin-bottom: 40px;
     padding: 16px;
-    background-color: #EDE8E2;
+
+    background-color: @blue;
+    box-shadow: 2px 2px 13px 5px fade(@text-color, 60);
 
     @media (min-width: @tablet-width) {
-        margin-bottom: 45px;
+        margin-bottom: 50px;
         padding-top: 36px;
     }
 
     @media (min-width: @laptop-width) {
-        margin-bottom: 50px;
+        margin-bottom: 70px;
     }
 
     @media (min-width: @desktop-width) {
-        margin-bottom: 80px;
+        margin-bottom: 90px;
     }
 }
 
@@ -31,7 +33,7 @@
 }
 
 .header__logo {
-    width: 132px;
+    width: 80px;
     height: auto;
 
     & img {
@@ -39,7 +41,7 @@
     }
 
     @media (min-width: @tablet-width) {
-        width: 200px;
+        width: 120px;
     }
 }
 
@@ -84,14 +86,14 @@
     font-size: 20px;
     line-height: 23px;
     text-decoration: none;
-    color: #424242;
+    color: @yellow;
 
     &:hover {
-        color: #6D8E5E;
+        color: @extra-brown;
     }
 
     &:active {
-        color: #8B9D83;
+        opacity: 0.8;
     }
 
     @media (min-width: @desktop-width) {
@@ -118,11 +120,11 @@
     cursor: pointer;
 
     &:hover .header__burger {
-        background-color: #6D8E5E;
+        background-color: @extra-brown;
     }
 
     &:active .header__burger {
-        background-color: #8B9D83;
+        opacity: 0.8;
     }
 
     @media (min-width: @tablet-width) {
@@ -139,7 +141,7 @@
     width: 100%;
     height: 2px;
 
-    background-color: #424242;
+    background-color: @yellow;
 
     transition: all 0.3s ease;
 
@@ -183,14 +185,14 @@
 
         font-size: 20px;
         text-decoration: none;
-        color: #424242;
+        color: @yellow;
 
         &:hover {
-            color: #6D8E5E;
+            color: @extra-brown;
         }
     
         &:active {
-            color: #8B9D83;
+            opacity: 0.8;
         }
 
         &::before {
@@ -220,12 +222,12 @@
     width: 320px;
     height: 640px;
 
-    border-left: 3px solid #8B9D83;
-    border-bottom: 3px solid #8B9D83;
+    border-left: 3px solid @yellow;
+    border-bottom: 3px solid @yellow;
 
     border-bottom-left-radius: 38px;
 
-    background-color: #EDE8E2;
+    background-color: @blue;
     overflow: hidden;
 
     z-index: 1;

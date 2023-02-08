@@ -8,47 +8,16 @@
         gap: 40px;
         margin: 0 auto;
         margin-bottom: 100px;
-
-        &::before {
-            content: "";
-    
-            position: absolute;
-            top: 0;
-            left: 365px;
-    
-            width: 308px;
-            height: 296px;
-    
-            background: url('../img/bg-wood.svg') no-repeat center;
-    
-            z-index: -1;
-        }
     }
 
     @media (min-width: @laptop-width) {
         gap: 62px;
         margin-bottom: 150px;
-
-        &::before {
-            width: 503px;
-            height: 483px;
-
-            top: 80px;
-            left: 552px;
-        }
     }
 
     @media (min-width: @desktop-width) {
         gap: 220px;
         margin-bottom: 180px;
-
-        &::before {
-            width: 718px;
-            height: 689px;
-
-            top: 113px;
-            left: 725px;
-        }
     }
 }
 
@@ -59,7 +28,7 @@
     height: 252px;
     margin: 0 auto 20px;
 
-    border: 3px solid #8B9D83;
+    border: 3px solid @blue;
     border-radius: 30px;
 
     overflow: hidden;
@@ -69,8 +38,8 @@
     }
 
     @media (min-width: @tablet-width) {
-        max-width: 590px;
-        height: 331px;
+        max-width: 580px;
+        height: 330px;
         margin: 0;
 
         order: 2;
@@ -216,7 +185,7 @@
     100% { transform: scale(50) rotate(45deg); opacity: 0; }
 }
 
-.welcome__inst-btn {
+.welcome__watsapp-btn {
     display: flex;
     justify-content: center;
     align-items: center;

@@ -7,36 +7,26 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             spaceBetween: 20  
         });
-
-        const teamSwiper = new Swiper('.team__wrapper', {
-            loop: false,
-            slidesPerView: 'auto',
-            slidesPerScroll: 1,
-            scrollbar: {
-                el: '.team__scrollbar',
-                draggable: true,
-            },
-            spaceBetween: 20  
-        })
     }
 })
 
-const projectsSwiper = new Swiper('.projects__wrapper', {
-    navigation: {
-        nextEl: '.projects__right-btn',
-        prevEl: '.projects__left-btn',
-    },
-    loop: true,
-    slidesPerView: 'auto',
-    breakpoints: {
-        320: {
-            spaceBetween: 45
-        },
-        1920: {
-            spaceBetween: 60
-        }
-    }
-})
+//Скрипт для блока Проекты (закомментирован)
+// const projectsSwiper = new Swiper('.projects__wrapper', {
+//     navigation: {
+//         nextEl: '.projects__right-btn',
+//         prevEl: '.projects__left-btn',
+//     },
+//     loop: true,
+//     slidesPerView: 'auto',
+//     breakpoints: {
+//         320: {
+//             spaceBetween: 45
+//         },
+//         1920: {
+//             spaceBetween: 60
+//         }
+//     }
+// })
 
 const servicesSwiper = new Swiper('.services__wrapper', {
     navigation: {

@@ -34,9 +34,9 @@ ul, ol, dl {
     font-size: 16px;
     line-height: 18px;
     font-weight: 400;
-    color: #424242;
+    color: @text-color;
 
-    background-color: #EDE8E2;
+    background-color: @bg-color;
     overflow-x: hidden;
 }
 
@@ -107,7 +107,7 @@ ul, ol, dl {
     line-height: 28px;
 
     & span {
-        color: #8B9D83;
+        color: @blue;
     }
 
     @media (min-width: @laptop-width) {
@@ -171,7 +171,7 @@ ul, ol, dl {
     line-height: 16px;
     color: #ffffff;
 
-    background-color: #8B9D83;
+    background-color: @blue;
     border: none;
     border-radius: 58px;
     cursor: pointer;
@@ -183,11 +183,11 @@ ul, ol, dl {
     transition: all 0.2s ease;
 
     &:hover {
-        background-color: #6D8E5E;
+        background-color: @extra-blue;
     }
 
     &:active {
-        background-color: #8B9D83;
+        opacity: 0.8;
     }
 
     &:disabled {
@@ -222,23 +222,24 @@ ul, ol, dl {
     font-size: 16px;
     line-height: 18px;
     text-align: center;
+    text-decoration: none;
     color: #686656;
 
     background-color: transparent;
-    border: 2px solid #8B9D83;
+    border: 2px solid @blue;
     border-radius: 55px;
     cursor: pointer;
     box-shadow: 0 1px 5px -2px;
     transition: all 0.2s ease;
 
     &:hover {
-        border-color: #6D8E5E;
+        border-color: @extra-blue;
         box-shadow: 0 4px 10px -2px;
         transform: translateY(-2px);
     }
 
     &:active {
-        border-color: #8B9D83;
+        border-color: @blue;
         opacity: 0.9;
     }
 
@@ -275,20 +276,20 @@ ul, ol, dl {
     font-style: inherit;
     color: #515151;
 
-    border: 2px solid #D5D5D5;
+    border: 3px solid #D5D5D5;
     border-radius: 17px;
 
     &:hover,
     &:focus {
-        border-color: #6D8E5E;
-    }
-
-    &:focus:invalid {
-        border-color: #CF0909;
+        border-color: @extra-blue;
     }
 
     &:focus-visible {
         outline: none;
+    }
+
+    @media (min-width: @laptop-width) {
+        border-width: 3px;
     }
 }
 
