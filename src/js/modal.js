@@ -64,8 +64,8 @@ const modalMessageToggler = () => {
     });
 }
 
-modalSubmitBtn.addEventListener('submit', (evt) => {
-    evt.preventDefault();
+modalSubmitBtn.addEventListener('click', (evt) => {
+    // evt.preventDefault();
 
     if (modalForm.checkValidity()) {
         modalMessageToggler();
